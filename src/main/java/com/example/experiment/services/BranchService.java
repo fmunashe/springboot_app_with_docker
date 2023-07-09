@@ -1,5 +1,6 @@
 package com.example.experiment.services;
 
+import com.example.experiment.exceptions.ResourceNotFoundException;
 import com.example.experiment.models.Branch;
 import com.example.experiment.repositories.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +23,15 @@ public class BranchService {
     }
 
     public Branch findBranchById(Long id) {
-        return branchRepo.findById(id).get();
+
+        return branchRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Could not find the branch with ID of " + id));
     }
 
     public void removeBranch(Long id) {
         branchRepo.deleteById(id);
     }
 
-    public List<Branch> findBranchbyCompanyId(Long id) {
+    public List<Branch> findBranchByCompanyId(Long id) {
         return branchRepo.findBranchByCompanyId(id);
     }
 }
