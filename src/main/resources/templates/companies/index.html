@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies</title>
+</head>
+
+<div class="container-fluid" data-layout-fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Companies <a th:href="@{createCompany}"><span class="btn btn-dark float-right">Create</span> </a>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-bordered table-sm table-condensed">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Sector</th>
+                            <th>Country</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="company:${companies}">
+                            <td th:text="${company.id}">Company Id</td>
+                            <td th:text="${company.name}">Company Name</td>
+                            <td th:text="${company.sectorId.name}">Sector</td>
+                            <td th:text="${company.country}">Country</td>
+                            <td><a th:href="@{'/editCompany/'+${company.id}}"><i class="badge badge-success">Edit</i></a> | <a th:href="@{'/removeCompany/'+${company.id}}"><i class="badge badge-danger">Remove</i></a> | <a th:href="@{'/showCompany/'+${company.id}}"><i class="badge badge-info">Show</i></a>  </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

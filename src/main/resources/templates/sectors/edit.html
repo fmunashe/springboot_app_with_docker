@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Sector</title>
+</head>
+<div class="container-fluid" data-layout-fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Update Sector <a href="/sectors"><span
+                        class="btn btn-dark float-right">Back</span></a></div>
+
+                <div class="card-body">
+                    <form method="PUT" th:action="@{'/updateSector/'+${sector.id}}">
+                        <input type="hidden" name="id" th:value="${sector.id}">
+                        <table class="table table-striped table-dark">
+                            <tbody>
+                            <tr>
+                                <td>Sector Name</td>
+                                <td><input type="text" name="name" th:value="${sector.name}" class="form-control"></td>
+                                <td></td>
+                                <td><input type="submit" class="btn btn-success"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

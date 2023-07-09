@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts</title>
+</head>
+
+<div class="container-fluid" data-layout-fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Contacts <a th:href="@{createContact}"><span class="btn btn-dark float-right">Create</span> </a>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-bordered table-sm table-condensed">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Employee</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="contact:${contacts}">
+                            <td th:text="${contact.id}">Contact Id</td>
+                            <td th:text="${contact.employeeId.name}">Employee Name</td>
+                            <td th:text="${contact.email}">Email</td>
+                            <td th:text="${contact.phone}">Phone</td>
+                            <td><a th:href="@{'/editContact/'+${contact.id}}"><i class="badge badge-success">Edit</i></a> | <a th:href="@{'/removeContact/'+${contact.id}}"><i class="badge badge-danger">Remove</i></a>  </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

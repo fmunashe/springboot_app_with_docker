@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" data-layout-decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee</title>
+</head>
+<div class="container-fluid" data-layout-fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Update Employee Details <a th:href="@{/employees}"><span
+                        class="btn btn-dark float-right">Back</span> </a></div>
+
+                <div class="card-body">
+                    <form method="PUT" th:action="@{'/updateEmployee/'+${employee.id}}">
+                        <input type="hidden" name="id" th:value="${employee.id}">
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2">Employee Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="name" th:value="${employee.name}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2">Position</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="position" th:value="${employee.position}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2">Primary Contact</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="primary_contact" required>
+                                        <option value="">Is Primary Contact ?</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2">Employee Branch</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="branchId" required>
+                                        <option value="">Select Branch</option>
+                                        <option th:each="branch:${branches}" th:value="${branch.id}" th:text="${branch.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2">Notes</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" name="notes" th:text="${employee.notes}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2"></label>
+                                <div class="col-sm-8">
+                                    <input type="submit" class="form-control btn btn-outline-dark" value="Update Employee Details">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

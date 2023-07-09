@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="eng" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout}">
+<head>
+    <title>AdminLTE with Spring Boot</title>
+</head>
+<body class="hold-transition sidebar-mini">
+
+
+<div class="row" data-layout-fragment="content">
+    <div class="container">
+        <h1 class="text-center">New Supplier</h1>
+        <form method="post" th:action="@{/saveSupplier}" th:object="${supplier}">
+
+
+            <div class="form-group">
+                <label>Trade Name</label>
+                <input type="text" name="tradeName" class="form-control">
+                <div class="text-danger" th:if="${#fields.hasErrors('tradeName')}" th:errors="*{tradeName}"></div>
+            </div>
+            <div class="form-group">
+                <label>Contact Person</label>
+                <input type="text" name="contact_person" class="form-control"></td>
+                <div class="text-danger" th:if="${#fields.hasErrors('contact_person')}" th:errors="*{contact_person}"></div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control">
+                <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" name="phone" class="form-control"></td>
+                <div class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="address" class="form-control"></textarea>
+                <div class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <input type="text" name="country" class="form-control">
+                <div class="text-danger" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="form-control btn btn-outline-dark">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

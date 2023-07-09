@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" data-layout-decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Companies</title>
+</head>
+<div class="container-fluid" style="min-height: 1416.81px;" data-layout-fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Company Overview</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a th:href="@{/suppliers}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/companies}">Companies</a></li>
+                    <li class="breadcrumb-item active">Company Details</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+    <!-- Main content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Profile Image -->
+                <div class="card card-dark card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle" src="/img/avatar.png"
+                                 alt="User profile picture">
+                        </div>
+
+                        <h3 class="profile-username text-center"><p th:text="${company.name}">Company</p></h3>
+                        <hr>
+                        <b>Name: </b>
+                        <span th:text="${company.name}"></span>
+                        <hr>
+                        <b>Country: </b>
+                        <span th:text="${company.country}"></span>
+                        <hr>
+                        <b>Sector: </b>
+                        <span th:text="${company.sectorId.name}"></span>
+                        <hr>
+                        <a th:href="@{'/editCompany/'+${company.id}}" class="btn btn-dark btn-block"><i
+                                class="fas fa-edit"></i><b> Edit</b></a>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h4 class="card-title">Company Branch Details</h4>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="callout callout-success" th:each="branch:${branches}">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <b>Name: </b>
+                                    <span th:text="${branch.name}"></span><br>
+                                    <b>Email: </b>
+                                    <span th:text="${branch.email}"></span><br>
+                                    <b>Phone: </b>
+                                    <span th:text="${branch.phone}"></span><br>
+                                    <b>Country: </b>
+                                    <span th:text="${branch.country}"></span><br>
+                                    <b>Address: </b>
+                                    <span th:text="${branch.address}"></span><br>
+                                    <b>Is Head Office: </b>
+                                    <span th:text="${branch.head_office}?Yes:No"></span><br>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    <!-- /.content -->
+</div>
+</html>
+

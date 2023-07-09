@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="eng" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout}">
+<head>
+    <title>AdminLTE with Spring Boot</title>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="row" data-layout-fragment="content">
+
+    <div class="container">
+    <a th:href="@{/createSupplier}" class="pull-right btn btn-dark mt-3 mb-3">New Supplier</a>
+    <table class="table table-striped table-sm table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Trade Name</th>
+            <th>Contact Person</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each ="supplier:${suppliers}">
+            <td th:text="${supplier.id}"/>
+            <td th:text="${supplier.tradeName}"/>
+            <td th:text="${supplier.contact_person}"/>
+            <td th:text="${supplier.email}"/>
+            <td th:text="${supplier.phone}"/>
+            <td th:text="${supplier.address}"/>
+            <td th:text="${supplier.country}"/>
+            <td><a th:href="@{'/removeSupplier/' + ${supplier.id}}">Remove</a></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+</body>
+</html>

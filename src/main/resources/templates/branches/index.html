@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layout}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Branches</title>
+</head>
+
+<div class="container-fluid" data-layout-fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Branches <a th:href="@{/createBranch}"><span class="btn btn-dark float-right">Create</span> </a>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-bordered table-sm table-condensed">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Company</th>
+                            <th>Head Office</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="branch:${branches}">
+                            <td th:text="${branch.id}">Branch Id</td>
+                            <td th:text="${branch.name}">Branch Name</td>
+                            <td th:text="${branch.companyId.name}">Company</td>
+                            <td th:text="${branch.head_office}?Yes:No">Head Office</td>
+                            <td th:text="${branch.phone}">Phone</td>
+                            <td th:text="${branch.email}">Email</td>
+                            <td th:text="${branch.country}">Country</td>
+                            <td th:text="${branch.address}">Address</td>
+                            <td><a th:href="@{'/editBranch/'+${branch.id}}"><i class="badge badge-success">Edit</i></a> | <a th:href="@{'/removeBranch/'+${branch.id}}"><i class="badge badge-danger">Remove</i></a>  | <a th:href="@{'/showBranch/'+${branch.id}}"><i class="badge badge-info">Show</i></a>  </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

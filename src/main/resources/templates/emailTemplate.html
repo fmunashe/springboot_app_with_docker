@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sending Email with Thymeleaf HTML Template Example</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/content/tables/">
+
+    <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+    <!-- use the font -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;">
+
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+    <tr>
+        <td align="center" bgcolor="#78ab46" style="padding: 40px 0 30px 0;" colspan="4">
+            <img src="/img/avatar.png" alt="https://memorynotfound.com" style="display: block;"/>
+        </td>
+    </tr>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Sector</th>
+    </tr>
+    <tr th:each="company:${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.name}"></td>
+        <td th:text="${company.country}"></td>
+        <td th:text="${company.sectorId.name}"></td>
+    </tr>
+</table>
+<hr>
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="1000" style="border-collapse: collapse;">
+    <tr>
+        <td align="center" bgcolor="#78ab46" style="padding: 40px 0 30px 0;" colspan="7">
+            <img src="/img/avatar.png" alt="https://memorynotfound.com" style="display: block;"/>
+        </td>
+    </tr>
+    <tr>
+        <th>#</th>
+        <th>Trade Name</th>
+        <th>Contact Person</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Country</th>
+        <th>Address</th>
+    </tr>
+    <tr th:each="supplier:${suppliers}">
+        <td th:text="${supplier.id}"></td>
+        <td th:text="${supplier.tradeName}"></td>
+        <td th:text="${supplier.contact_person}"></td>
+        <td th:text="${supplier.email}"></td>
+        <td th:text="${supplier.phone}"></td>
+        <td th:text="${supplier.country}"></td>
+        <td th:text="${supplier.address}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
